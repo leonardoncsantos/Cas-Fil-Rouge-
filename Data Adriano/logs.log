@@ -1,0 +1,10 @@
+2025-02-24 21:37:47,638:WARNING:C:\Users\adria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tpot\builtins\__init__.py:36: UserWarning:
+
+Warning: optional dependency `torch` is not available. - skipping import of NN models.
+
+
+2025-02-24 21:37:47,893:WARNING:C:\Users\adria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\tpot\base.py:1164: SyntaxWarning:
+
+invalid escape sequence '\w'
+
+
