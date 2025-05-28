@@ -1,0 +1,4 @@
+cursor.execute("""INSERT INTO `costsim_parts`([index], [part_number], [project_name], [part_name], [raw_material_designation], [color], [extra_material],
+[production_place], [percentage_of_extra_material], [raw_material_price], [part_volume], [part_weight], [part_length], [part_width], [part_height], [avrg_thickness], [max_thickness], [annual_target_quantity], [part_price_amortizated],`label`)
+VALUES ('[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]',
+'[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]', '[1]','label')""")
