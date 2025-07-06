@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Cost Simulator</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'costsim/css/welcome.css' %}" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+              rel="stylesheet">
+        <linkn href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet" />
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+    </head>
+    <body style="background-color: #f3f3f3;">
+        <head>
+            {% comment %} <nav class="bg-green-600 shadow py-2 navbar navbar-expand-lg" style="background-color: #3dcd58; border-bottom: 4px solid #009530">
+                <div class=" container d-flex align-items-center">
+                    <a class="logo" href="{% url 'homepage' %}">
+                        <img class="md:h-12 h-8 img-fluid " src="/static/costsim/assets/img/schneider.png">
+                    </a>
+                    <div class="title flex-grow-1 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline relative -top-0.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+                        </svg>
+                        COST ESTIMATION
+                    </div>
+                </div>
+            </nav> {% endcomment %}
+            <nav class="navbar bg-green-600 shadow py-2"
+                 style="background-color: #3dcd58">
+                <a class="navbar-brand" href="#">
+                    <img src="/static/costsim/assets/img/schneider.png"
+                         class="d-inline-block align-top logo"
+                         alt="@">
+                       
+                </a>
+                
+                <div class="title navbar-text no-cursor">IA COST ESTIMATION</div>
+                <style>
+                    .no-cursor {
+                        cursor: default;
+                    }
+
+                </style>
+
+                <a class="navbar-brand" href="#">
+                    <img src="/static/costsim/assets/img/home.png"
+                
+                         alt="@">
+                       
+                </a>
+            </nav>
+        </head>
+        <!-- body  -->
+        <main>
+            <div class="content">
+                <div id="welcome">
+                    <h3>Welcome to the cost estimation application</h3>
+                </div>
+                <div class="productSelection">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle bg-success"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">Select a product</button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'pcb:insert' %}">PCB</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'pcba:insert' %}">PCBA</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'masoud:insert' %}">Plastic</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <footer class="relative bg-blueGray-200 pt-2 pb-6  ">
+            <div class="container mx-auto px-4 ">
+                <hr class="my-6 border-blueGray-300">
+                <div class="flex flex-wrap items-center md:justify-between justify-center ">
+                    <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+                        <div class="text-sm text-blueGray-500 font-semibold py-1">
+                            Copyright © <span id="get-current-year">2021 Schneider Electric
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'costsim/js/scripts.js' %}"></script>
+    </body>
+</html>

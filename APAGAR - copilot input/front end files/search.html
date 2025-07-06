@@ -1,0 +1,42 @@
+{% block content %}
+<h2 class="text-3xl font-semibold text-gray-700 mt-4">
+  <span class="block">
+      2. Production place of the part
+  </span>
+</h2>
+<div class="text-center mt-4">
+<form action="{% url 'masoud:search' %}" method="get" accept-charset="utf-8">
+  <label class="w-full w-48 max-w-xl">
+      <select class="form-select" onchange="this.form.submit()" id="query" name="query">
+        <option selected disabled>Choose a production place</option>
+        <option disabled>--- EMEC</option>
+        <option value="France">France</option>
+        <option value="Germany">Germany</option>
+        <option value="Spain">Spain</option>
+        <option value="Italy">Italy</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option disabled>--- ENEC</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Poland">Poland</option>
+        <option value="Hungary">Hungary</option>
+        <option value="Czech Republic">Czech Republic</option>
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="Turkey">Turkey</option>
+        <option value="Tunisia">Tunisia</option>
+        <option disabled>--- Asia</option>
+        <option value="China">China</option>
+        <option value="India">India</option>
+        <option disabled>--- EA</option>
+        <option value="Singapore">Singapore</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Malaysia">Malaysia</option>
+        <option value="Vietnam">Vietnam</option>
+        <option value="Philippines">Philippines</option>
+        <option disabled>--- Mexico</option>
+        <option value="Mexico">Mexico</option>
+      </select>
+    </label>
+  </form>
+</div>
+{% endblock %}

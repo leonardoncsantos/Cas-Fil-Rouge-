@@ -1,0 +1,108 @@
+{% extends 'costsim/masoud/base.html' %}
+{% block content %}
+    {% include 'costsim/masoud/search.html' %}
+
+    <h2 class="text-3xl font-semibold text-gray-700 mt-4">
+        <span class="block">3. Variables</span>
+    </h2>
+    <form action="{% url 'masoud:calculus' %}"
+          method="get"
+          accept-charset="utf-8"
+          class="text-center mt-2">
+        <div class="grid grid-cols-{{ url|length|add:1 }} gap-6">
+
+            {% for var in url %}
+                {% if var != "country" %}
+                    <div>
+                        <p>
+                            <b>{{ var }}</b>
+                        </p>
+                        <input id="searchForm"
+                               type="text"
+                               value="{{ information | get_item:var}}"
+                               placeholder="Please indicate the value required"
+                               name="{{ var }}"
+                               class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <p class="help-block text-danger"></p>
+                    </div>  
+                {% endif %}
+            {% endfor %}
+            <input type="hidden" name="label" value="{{ query }}">
+            <div>
+                <p>
+                    <b>Part Name</b>
+                </p>
+                <input id="searchForm"
+                       type="text"
+                       value="{{ givenname }}"
+                       placeholder="Please indicate the value required"
+                       name="partname"
+                       class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <p class="help-block text-danger"></p>
+                <input id="country" name="country" type="hidden">
+            </div>
+        </div>
+        <button type="submit"
+                id="submitCalculationAgainBtn"
+                style="background-color: #3dcd58"
+                class="mt-4 py-2 px-4 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+            <svg id="submitCalculationAgainAnimate"
+                 class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white inline relative -top-0.5"
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-5 w-5 inline relative -top-0.5"
+                 viewBox="0 0 20 20"
+                 fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+        </svg>
+        Launch calculation again
+    </button>
+</form>
+<div class="flex w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto max-w-xl mt-4 border-2 border-gray-200 text-center">
+    {% if message is not null %}
+        <div class="flex items-center justify-center w-12"
+             style="background-color: red">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-6 w-6 text-white fill-current"
+                 viewBox="0 0 20 20"
+                 fill="currentColor">
+                <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd" />
+            </svg>
+        </div>
+    {% else %}
+        <div class="flex items-center justify-center w-12"
+             style="background-color: #3dcd58">
+            <svg class="w-6 h-6 text-white fill-current"
+                 viewBox="0 0 40 40"
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+            </svg>
+        </div>
+    {% endif %}
+    <div class="px-4 py-2 -mx-3 w-full">
+        <div class="mx-3">
+            <span class="font-semibold text-green-500 dark:text-green-400 text-xl">
+                {% if message is not null %}
+                    {{ message }}
+                {% else %}
+                    Success
+                {% endif %}
+            </span>
+            {% if message is null %}
+                <p class="text-gray-600 text-md">
+                    For the previous parameters, estimation cost is
+                    <span class="text-green-400 font-semibold text-xl">{{ results.0 }}€</span>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

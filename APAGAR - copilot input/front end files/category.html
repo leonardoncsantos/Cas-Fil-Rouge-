@@ -1,0 +1,75 @@
+{% extends 'costsim/masoud/base.html' %}
+{% block content %}
+    {% include 'costsim/masoud/search.html' %}
+    <h2 class="text-3xl font-semibold text-gray-700 mt-4">
+        <span class="block">3. Variables</span>
+    </h2>
+    <form action="{% url 'masoud:calculus' %}"
+          method="get"
+          accept-charset="utf-8"
+          class="text-center mt-2">
+        <div class="grid grid-cols-{{ variables_to_print|length|add:1 }} gap-6">
+            {% for variable in variables_to_print %}
+                <div>
+                    <p>
+                        <b>{{ variable }}</b>
+                    </p>
+                    <input id="searchForm"
+                           type="text"
+                           placeholder="Please indicate the value required"
+                           name="{{ variable }}"
+                           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <p class="help-block text-danger"></p>
+                </div>
+            {% endfor %}
+            <input type="hidden" name="label" value="{{ query }}">
+            <div>
+                <p>
+                    <b>Part Name</b>
+                </p>
+                {% comment %} <p>
+                    <!-- <b>Color</b>
+                </p> {% endcomment %}
+                {% comment %} <form action="/action_page.php">
+                    <select name="color" id="color">
+                      <option value="volvo">White</option>
+                      <option value="saab">Black</option>
+                      <option value="opel">Grey</option>
+                      <option value="audi">Green</option>
+                      <option value="audi">Red</option>
+                      <option value="audi">not in the list</option>
+                    </select>
+                </form> {% endcomment %}-->
+                <input id="searchForm"
+                       type="text"
+                       placeholder="Please indicate the value required"
+                       name="partname"
+                       class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <input id="country" name="country" type="hidden">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <button type="submit"
+                id="submitCalculationBtn"
+                style="background-color: #3dcd58"
+                class="mt-4 py-2 px-4 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+            <svg id="submitCalculationAnimate"
+                 class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white inline relative -top-0.5"
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-5 w-5 inline relative -top-0.5"
+                 viewBox="0 0 20 20"
+                 fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+        </svg>
+        Launch calculation
+    </button>
+</form>
+{% endblock %}
